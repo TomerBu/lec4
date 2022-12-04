@@ -1,0 +1,11 @@
+.card {
+  margin: 8px;
+  padding: 16px;
+  border-radius: 8px;
+  background: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 1px 1px 4px 3px rgba($color: #000000, $alpha: 0.3);
+}
