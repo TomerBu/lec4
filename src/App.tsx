@@ -1,24 +1,24 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-
+import { useState } from "react";
+import "./App.css";
+import AddCard from "./components/add-card/AddCard";
+import BusinessList from "./components/business-list/BusinessList";
+import list from "./services/business-list";
 function App() {
+  //נשמור את הרשימה כמשתנה מצב - ברגע שנעדכן את הרשימה - יעדכן את ממשק המשתמש
+  const [cards, setCards] = useState(list);
+
+  const deleteBusiness = (id: string) => {
+    setCards((cards) => {
+      let copy = [...cards];
+      copy = copy.filter((card) => card.id !== id);
+      //save the current value to localStorage / cloud / redux
+      return copy;
+    });
+  };
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <AddCard />
+      <BusinessList list={cards} callback={deleteBusiness} />
     </div>
   );
 }

@@ -1,9 +1,10 @@
 import Business from "../services/business";
 
 export type BusinessCardProps = {
-  // hidden: boolean;
+  callback: (id: string) => void;
 } & Business;
 
 export type BusinessListProps = {
-  list: BusinessCardProps[];
+  list: Business[];
+  callback: (id: string) => void;
 };
