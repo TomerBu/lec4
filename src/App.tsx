@@ -2,6 +2,7 @@ import { useState } from "react";
 import "./App.css";
 import AddCard from "./components/add-card/AddCard";
 import BusinessList from "./components/business-list/BusinessList";
+import Business from "./services/business";
 import list from "./services/business-list";
 function App() {
   //נשמור את הרשימה כמשתנה מצב - ברגע שנעדכן את הרשימה - יעדכן את ממשק המשתמש
@@ -15,9 +16,15 @@ function App() {
       return copy;
     });
   };
+
+  //הפונקציה שמגיבה לאירוע:
+  const addBusiness = (business: Business)=>{
+    setCards(cards=>[business, ...cards])
+  }
   return (
     <div className="App">
-      <AddCard />
+       <AddCard callback={b=>{}}/>
+      <AddCard callback={addBusiness}/>
       <BusinessList list={cards} callback={deleteBusiness} />
     </div>
   );

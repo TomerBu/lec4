@@ -1,25 +1,30 @@
 import { useState } from "react";
 import Business from "../../services/business";
+import { AddBusinessProps } from "../../types/types";
 import styles from "./AddCard.module.scss";
 
-const AddCard = () => {
+const AddCard = ({ callback }: AddBusinessProps) => {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [link, setLink] = useState("");
   const [image, setImage] = useState("");
+
+  const [isNameValid, setNameValid] = useState(true);
   //on click: get the values from the inputs
   const addCardHandler = () => {
     const business = new Business(name, description, image, link);
-    console.log(business);
+    callback(business);
   };
   return (
     <div>
       <h2>Add New Business</h2>
 
       <input
+        className={isNameValid ? styles.valid : styles.invalid}
         value={name}
         onChange={(e) => {
           setName(e.target.value);
+          setNameValid(e.target.value.length > 2);
         }}
         type="text"
         placeholder="Name"
