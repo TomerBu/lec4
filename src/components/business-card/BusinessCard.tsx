@@ -1,9 +1,5 @@
-import Business from "../../services/business";
+import { BusinessCardProps } from "../../types/types";
 import styles from "./BusinessCard.module.scss";
-
-export type BusinessCardProps = {
-  // hidden: boolean;
-} & Business;
 
 const BusinessCard = ({
   id,
