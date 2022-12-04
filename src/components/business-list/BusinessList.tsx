@@ -1,8 +1,8 @@
-import Business from "../../services/business";
+import { BusinessCardProps } from "../business-card/BusinessCard";
 import styles from "./BusinessList.module.scss";
 //
 type BusinessListProps = {
-  list: Business[];
+  list: BusinessCardProps[];
 };
 const BusinessList = ({ list }: BusinessListProps) => {
   return <div>BusinessList</div>;

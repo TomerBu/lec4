@@ -1,7 +1,7 @@
 import Business from "../../services/business";
 import styles from "./BusinessCard.module.scss";
 
-type BusinessCardProps = {
+export type BusinessCardProps = {
   // hidden: boolean;
 } & Business;
 
